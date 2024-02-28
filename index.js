@@ -21,10 +21,13 @@ function clear() {
   c2.innerHTML = "";
 }
 function handleClick() {
-  fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
+  drawCardBtn.disabled = false;
+  // fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
+  fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
     .then((res) => res.json())
     .then((data) => {
       clear();
+      console.log("cvcxvcv");
       remainingText.textContent = `Remaining cards: ${data.remaining}`;
       deckId = data.deck_id;
       console.log(deckId);
@@ -34,9 +37,11 @@ function handleClick() {
 newDeckBtn.addEventListener("click", handleClick);
 
 drawCardBtn.addEventListener("click", () => {
-  fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
+  // fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
+  fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
     .then((res) => res.json())
     .then((data) => {
+      console.log("data", data);
       remainingText.textContent = `Remaining cards: ${data.remaining}`;
       cardsContainer.children[0].innerHTML = `
                 <img src=${data.cards[0].image} class="card" />
