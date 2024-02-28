@@ -22,7 +22,6 @@ function clear() {
 }
 function handleClick() {
   drawCardBtn.disabled = false;
-  // fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
   fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
     .then((res) => res.json())
     .then((data) => {
@@ -37,7 +36,6 @@ function handleClick() {
 newDeckBtn.addEventListener("click", handleClick);
 
 drawCardBtn.addEventListener("click", () => {
-  // fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
   fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
     .then((res) => res.json())
     .then((data) => {
